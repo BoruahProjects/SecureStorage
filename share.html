@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Share</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-loading">
+    <div id="app-container">
+        <div id="share-page" class="page centered-page">
+            <div class="card">
+                <h1 id="share-title" class="app-title">Secure Share</h1>
+                <p id="share-status" class="app-subtitle">Initializing...</p>
+
+                <div id="file-details" class="hidden mb-3">
+                    <p>You have been sent the file:</p>
+                    <p id="file-name" class="share-file-name"></p>
+                    <p id="file-size" class="share-file-size"></p>
+                </div>
+
+                <form id="password-prompt" class="form hidden mb-3">
+                    <p class="app-subtitle">This link is password protected. Please enter the password to continue.</p>
+                    <div>
+                        <input type="password" id="share-password-input" placeholder="Password" required class="input-field" autocomplete="new-password"/>
+                    </div>
+                    <button type="submit" id="password-submit-button" class="button primary-button mt-2">Unlock</button>
+                </form>
+
+                <div id="action-container" class="hidden d-flex justify-center gap-2">
+                     <button id="preview-button" class="button secondary-button" disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        <span>Preview</span>
+                    </button>
+                     <button id="download-button" class="button primary-button" disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <span>Download</span>
+                    </button>
+                </div>
+
+                <p id="share-error" class="error-message"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="preview-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header preview-modal-header">
+                <h3 id="preview-file-name" class="modal-title preview-filename"></h3>
+                <button id="close-preview-modal" class="close-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div id="preview-content-area">
+                <div id="preview-loading-status" class="preview-loading-status">
+                    <div class="spinner spinner-centered"></div>
+                    <p>Loading and decrypting...</p>
+                </div>
+            </div>
+            <div class="modal-actions justify-between items-center mt-2 p-0">
+                <span id="preview-file-size" class="preview-file-size"></span>
+                <button id="preview-download-button" class="button primary-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span>Download</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="share.js"></script>
+</body>
+</html>
